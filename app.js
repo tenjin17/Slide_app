@@ -38,7 +38,15 @@ document.getElementById('toggleSidebar').addEventListener('click', function() {
     mainContent.classList.toggle('main-content-shifted');
 });
 
-// 設定モーダルの制御
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleSidebar');
+    if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
+        sidebar.classList.remove('open');
+        document.getElementById('main-content').classList.remove('main-content-shifted');
+    }
+});
+
 document.getElementById('settingsButton').addEventListener('click', function() {
     document.getElementById('settings-modal').style.display = 'block';
 });
@@ -430,4 +438,4 @@ function toggleMusic(shouldPlay) {
             currentAudio.pause();
         }
     }
-} 
+}
